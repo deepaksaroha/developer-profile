@@ -28,7 +28,7 @@ window.onload = ()=>{
         document.querySelector('#profiles-display').appendChild(box);
     }
 
-
+    
 
     function displaydashboard(){
         fetch('/api/developers').then(res=>{
@@ -65,13 +65,9 @@ window.onload = ()=>{
 
             let val = document.querySelector('.form-box input').value;
 
-            console.log('old',val)
-
             const timer = setInterval(()=>{
                 
                 let presentval = document.querySelector('.form-box input').value;
-
-                console.log('old', val, presentval)
 
                 if(presentval === '' && val !== presentval){
                     document.querySelector('#profiles-display').style.display = 'grid';                    
@@ -109,12 +105,6 @@ window.onload = ()=>{
     })
 
     
-    
-
-    
-
-
-
     const srchbtn = document.querySelector('#srchbtn');
     srchbtn.addEventListener('click', event=>{
         event.preventDefault();
@@ -150,6 +140,7 @@ window.onload = ()=>{
 
     const submitbtn = document.querySelector('#submitbtn');
     submitbtn.addEventListener('click', event=>{
+        
         event.preventDefault();
 
         const formele = document.querySelector("#form");
@@ -187,7 +178,7 @@ window.onload = ()=>{
     })
 
     document.getElementById("profiles-display").addEventListener('click', (event)=>{
-        window.location = "profilepage.html";
+        window.location = `profilepage.html?name=${event.target.name}`;
     })
 
 }

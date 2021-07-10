@@ -46,10 +46,10 @@ router.post('/', (req, res, next)=>{
         repos = []
         for(repo in response[1].data){
             repos.push({
-                name: repo.name,
-                html_url: repo.html_url,
-                description: repo.description,
-                updated_at: repo.updated_at
+                name: response[1].data[repo].name,
+                html_url: response[1].data[repo].html_url,
+                description: response[1].data[repo].description,
+                updated_at: response[1].data[repo].updated_at
             })
         }
         profiles[id].repos = repos;
