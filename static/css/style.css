@@ -1,0 +1,199 @@
+body{
+    margin: 0 auto;
+    width: 80%;
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+#overlay{
+    display: none;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(105, 98, 98, 0.5);
+    z-index: 1;
+}
+
+.header{
+    display: flex;
+    height: 600px;
+    background-color: rgb(46, 36, 56);
+    align-items: center;
+}
+.item1{
+    width: 50%;
+}
+
+.heading{
+    padding: 100px;
+    color: #ffffff;
+    font-size: 72px;
+}
+
+.img1 img{
+    height: 500px;
+    width: 600px;
+}
+
+.main{
+    text-align: center;
+    padding: 0px 50px;
+    min-height: 1000px;  
+}
+
+.main-heading{
+    padding: 50px;
+    font-size: 56px;
+    color: #3f3d56;
+}
+hr{
+    margin: 0px;
+}
+
+.cover{
+    padding: 50px;
+}
+
+.form-box{
+    width: 80%;
+    padding: 10px;
+    margin: 0 auto;
+    width: fit-content;
+    background-color: #d0cde1;
+    border-radius: 12px;
+}
+
+.form-box input{
+    height: 60px;
+    width: 700px;
+    border: 0px;
+    border-radius: 12px;
+    font-size: 24px;
+    padding-left: 1em;
+}
+
+.form-box button{
+    border: none;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+.form-box button img{
+    vertical-align: middle;
+    margin-left: 20px;
+    height: 50px;
+    width: 50px;
+}
+
+.common{
+    font-size: 36px;
+    color: #3f3d56;
+}
+
+#profiles-display{
+    width: 80%;
+    margin: 0 auto;
+    padding: 50px 0 100px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: left;
+}
+
+
+.bottom{
+    padding: 50px;
+}
+
+.bottom-btn{
+    font-size: inherit;
+    border: none;
+    height: 80px;
+    padding: 0 2em;
+    border-radius: 12px;
+    background-color: #7c639f;
+    color: #fff;
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    height: 80px;
+    font-size: 24px;
+    line-height: 80px;
+    background-color: rgb(46, 36, 56);
+    color: #ffffff;
+    width: 80%;
+}
+
+.footer img{
+    vertical-align: middle;
+}
+
+#marginforfooter{
+    margin-bottom: 82px;
+}
+
+#dev-form{
+    position: absolute;
+    right: 30%;
+    top: 30%;
+    display: none;
+    width: fit-content;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 30px;
+    font-size: 24px;
+    z-index: 1;
+}
+
+.form-head{
+    padding: 20px 50px 50px 20px;
+    font-size: 32px;
+}
+
+#form-input{
+    padding: 50px 20px 50px 20px;
+}
+
+
+#form-input div input{
+    padding: 0;
+    margin: 0;
+    width: 600px;
+    height: 50px;
+    margin-bottom: 30px;
+    border: 1px solid #d0cde1;
+    border-radius: 12px;
+}
+
+.input-itm{
+    margin-bottom: 20px;
+}
+
+.input-itm img{
+    vertical-align: bottom;
+    height: 30px;
+    width: 30px;
+}
+
+#form-btns{
+    padding: 50px 20px 20px 20px;
+    text-align: end;
+}
+
+#cancelbtn{
+    font-size: 24px;
+    background-color: inherit;
+    border: none;
+}
+
+#submitbtn{
+    color: #fff;
+    width: 175px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #7c639f;
+    border: none;
+    border-radius: 12px;
+}
