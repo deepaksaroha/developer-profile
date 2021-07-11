@@ -1,6 +1,5 @@
 window.onload = ()=>{
 
-    console.log(window.location.href)
 
 
     function reachlist(img1, text){
@@ -43,10 +42,7 @@ window.onload = ()=>{
     })
     .then(res=>{
 
-        const p_img = document.createElement('img')
-        p_img.src = res.avatar_url;
-        document.getElementById('profileimg').appendChild(p_img)
-
+        document.getElementById('profileimg').src = res.avatar_url;
 
         document.getElementById('name').innerText = res.name;
 
@@ -68,13 +64,40 @@ window.onload = ()=>{
 
 
         for(let i = 0; i<res.repos.length; i++){
-            console.log(res.repos[i].name)
-            let name = document.createElement('div');
+
+
+            let box = document.createElement('div')
+            box.style.marginTop = '30px';
+            box.style.marginBottom = '30px';
+
+            let name = document.createElement('span');
             name.innerText = res.repos[i].name;
-            desc = document.createElement('p');
+            name.style.fontSize = '36px';
+            name.style.color = '#4396da';
+
+            let date = document.createElement('span');
+            date.innerText = `Updated on ${res.repos[i].updated_at}`;
+            date.style.fontSize = '24px';
+            date.style.marginLeft = '20px';
+            date.style.color = '#b3b9bd';
+
+            let arrow = document.createElement('img');
+            arrow.src = '/images/north_east-24px.svg';
+
+            let desc = document.createElement('p');
             desc.innerText = res.repos[i].description;
-            document.getElementById('repos').appendChild(name);
-            document.getElementById('repos').appendChild(desc);
+            desc.style.fontSize = '32px';
+            desc.style.color = '#7d7f81';
+
+
+            box.appendChild(name);            
+            box.appendChild(arrow);           
+            box.appendChild(date); 
+            box.appendChild(desc);
+
+            document.getElementById('repos').appendChild(box);
+            document.getElementById('repos').appendChild(document.createElement('hr'));
+            
         }
     })
 }

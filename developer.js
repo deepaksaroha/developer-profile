@@ -25,7 +25,7 @@ router.post('/', (req, res, next)=>{
     .then(axios.spread((...response) => {        
         
         userdata = response[0].data;
-        // console.log(userdata.avatar_url)
+        
         profiles[id] = {
             "id": id,
 	        "avatar_url": userdata.avatar_url,
@@ -42,6 +42,7 @@ router.post('/', (req, res, next)=>{
 	        "twitter_id": req.body.twitter_id,
 	        "medium_id": req.body.medium_id,
         }
+
 
         repos = []
         for(repo in response[1].data){

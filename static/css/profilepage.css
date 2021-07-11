@@ -18,16 +18,18 @@ body{
 
 #head2{
     float: right;
-    padding: 10px;  
+    padding: 10px;
+    text-decoration: none;
+    color: inherit;
 }
 
 .main-content{
-    text-align: center;
     padding: 0px 50px;
     min-height: 1000px;  
 }
 
 .main-heading{
+    text-align: center;
     padding: 50px;
     font-size: 56px;
     color: #3f3d56;
@@ -54,4 +56,36 @@ hr{
 
 #marginforfooter{
     margin-bottom: 82px;
+}
+
+#intro{
+    background-color: #b3b3ce;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+#profileimg{
+    vertical-align: middle;
+    height: 400px;
+    width: 400px;
+    padding: 75px;
+}
+
+#name{
+    margin-top: 100px;
+    font-size: 48px;
+}
+
+#intro-line{
+    margin-top: 30px;
+    font-size: 24px;
+}
+
+#linklist{
+    margin-top: 30px;
+}
+
+#reachlist{
+    margin-top: 30px;
+    font-size: 24px;
 }
