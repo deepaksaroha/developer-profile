@@ -4,6 +4,10 @@ window.onload = ()=>{
         let box = document.createElement('div');
         box.name = res.id
         box.class = 'proflinks';
+        box.style.width = '100%';
+        box.addEventListener('click', (event)=>{
+            window.location = `profilepage.html?name=${event.target.name}`;
+        })
 
         let avatar = document.createElement('img');
         avatar.setAttribute('src', '/images/account_circle-24px.svg')
@@ -69,6 +73,8 @@ window.onload = ()=>{
                 
                 let presentval = document.querySelector('.form-box input').value;
 
+
+                console.log(presentval, val)
                 if(presentval === '' && val !== presentval){
                     document.querySelector('#profiles-display').style.display = 'grid';                    
                     document.querySelector('#profiles-display').innerHTML = '';
@@ -81,10 +87,12 @@ window.onload = ()=>{
                     document.querySelector('#profiles-display').style.display = 'grid';
                     document.querySelector('#profiles-display').innerHTML = '';
                 
-                    var patt = new RegExp(presentval+"\\S*")
+                    var patt = new RegExp('^'+presentval+"[A-Za-z0-9_]*")
+
+                    console.log(patt, presentval)
 
                     for(i in res.list){
-                        if((res.list[i].id).match(patt)){
+                        if(patt.test(res.list[i].id)){
 
                             displayprofs(res.list[i]);
 
@@ -191,8 +199,6 @@ window.onload = ()=>{
         }
     })
 
-    document.getElementById("profiles-display").addEventListener('click', (event)=>{
-        window.location = `profilepage.html?name=${event.target.name}`;
-    })
+    
 
 }
