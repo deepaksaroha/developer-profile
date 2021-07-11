@@ -109,20 +109,29 @@ window.onload = ()=>{
     srchbtn.addEventListener('click', event=>{
         event.preventDefault();
         document.querySelector('#profiles-display').innerHTML = '';
+
         const formele = document.querySelector('#srchform');
         const formData = new FormData(formele);
-        fetch(`/api/developers/${formData.get('id')}`)
-        .then(res=>{
-            return res.json();
-        })
-        .then(res=>{
 
-            displayprofs(res);
-
-        }, error=>{
-            document.querySelector('#profiles-display').style.display = 'none';
-        })
+        if(formData.get('id') !== ''){
+            fetch(`/api/developers/${formData.get('id')}`)
+            .then(res=>{
+                return res.json();
+            })
+            .then(res=>{
+    
+                displayprofs(res);
+    
+            }, error=>{
+                document.querySelector('#profiles-display').style.display = 'none';
+            })
+        }else{
+            window.alert('Enter something to search')
+            displaydashboard()
+        }
     })
+
+
 
     const devbtn = document.querySelector('.bottom-btn');
     devbtn.addEventListener('click', event=>{
@@ -131,12 +140,16 @@ window.onload = ()=>{
         document.querySelector('#dev-form').style.display = 'block';
     })
 
+
+
     const cancelbtn = document.querySelector('#cancelbtn');
     cancelbtn.addEventListener('click', event=>{
         event.preventDefault();
         document.querySelector('#overlay').style.display = 'none'; 
         document.querySelector('#dev-form').style.display = 'none';
     })
+
+
 
     const submitbtn = document.querySelector('#submitbtn');
     submitbtn.addEventListener('click', event=>{

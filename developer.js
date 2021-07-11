@@ -65,6 +65,7 @@ router.get('/:id', (req, res, next)=>{
     
     profile = profiles[req.params.id]
     if (profile){
+        console.log('at')
         res.status(200).send({
             "id": req.params.id,
 	        "avatar_url": profile.avatar_url,
