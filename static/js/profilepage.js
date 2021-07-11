@@ -2,6 +2,36 @@ window.onload = ()=>{
 
     console.log(window.location.href)
 
+
+    function reachlist(img1, text){
+        const img = document.createElement('img');
+        img.setAttribute('style','height: 30px')
+        img.setAttribute('style','width: 30px')
+        img.style.verticalAlign = 'middle';
+        img.src = img1;
+
+        const spn = document.createElement('span');
+        spn.innerText = text;
+
+        document.getElementById('reachlist').appendChild(img)
+        document.getElementById('reachlist').appendChild(spn)
+    }
+
+    function linklist(img1, link){
+        const a = document.createElement('a');
+        a.href = link
+        a.target = '_blank'
+
+        const img = document.createElement('img');
+        img.setAttribute('style','height: 30px')
+        img.setAttribute('style','width: 30px')
+        img.style.verticalAlign = 'middle';
+        img.src = img1
+
+        a.appendChild(img)
+        document.getElementById('linklist').appendChild(a)
+    }
+
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
@@ -13,61 +43,39 @@ window.onload = ()=>{
     })
     .then(res=>{
 
-        // console.log(res)
+        const p_img = document.createElement('img')
+        p_img.src = res.avatar_url;
+        document.getElementById('profileimg').appendChild(p_img)
+
+
         document.getElementById('name').innerText = res.name;
 
         document.getElementById('intro-line').innerText = res.bio;
 
-        for(let i = 0; i<7; i++){
-            let img = document.createElement('img');
-            img.setAttribute('style','height: 30px')
-            img.setAttribute('style','width: 30px')
-            img.style.verticalAlign = 'middle';
-            document.getElementById('linklist').appendChild(img)
-        }
 
-        let img1 = document.createElement('img');
-        img1.setAttribute('style','height: 30px')
-        img1.setAttribute('style','width: 30px')
-        img1.style.verticalAlign = 'middle';
-        spn1 = document.createElement('span');
-        img1.src = '/images/location_on-24px.svg';
-        spn1.innerText = res.location;
-        document.getElementById('reachlist').appendChild(img1)
-        document.getElementById('reachlist').appendChild(spn1)
-
-        let img2 = document.createElement('img');
-        img2.setAttribute('style','height: 30px')
-        img2.setAttribute('style','width: 30px')
-        img2.style.verticalAlign = 'middle';
-        spn2 = document.createElement('span');
-        img2.src = '/images/business-24px.svg';
-        spn2.innerText = res.company;
-        document.getElementById('reachlist').appendChild(img2)
-        document.getElementById('reachlist').appendChild(spn2)
-
-        let img3 = document.createElement('img');
-        img3.setAttribute('style','height: 30px')
-        img3.setAttribute('style','width: 30px')
-        img3.style.verticalAlign = 'middle';
-        spn3 = document.createElement('span');
-        img3.src = '/images/insert_link-24px (1).svg';
-        spn3.innerText = res.blog;
-        document.getElementById('reachlist').appendChild(img3)
-        document.getElementById('reachlist').appendChild(spn3)
+        linklist('/images/iconfinder_github_317712.png',`https://github.com/${res.github_id}`)
+        linklist('/images/iconfinder_160_Hackerrank_logo_logos_4373234.png',`https://www.hackerrank.com/profile/${res.hackerrank_id}`)
+        linklist('/images/codechef-1324440139527402917_32.png',`https://www.codechef.com/users/${res.codechef_id}`)
+        linklist('/images/iconfinder_2018_social_media_popular_app_logo_linkedin_3225190.png',`https://linkedin.com/in/${res.linkedin_id}`)
+        linklist('/images/iconfinder_Circled_Medium_svg5_5279113.png',`https://medium.com/@${res.medium_id}`)
+        linklist('/images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png',`https://twitter.com/${res.twitter_id}`)
+        linklist('/images/email-24px.svg',res.email)
 
         
+        reachlist('/images/location_on-24px.svg', res.location)
+        reachlist('/images/business-24px.svg', res.company)
+        reachlist('/images/insert_link-24px (1).svg', res.blog)
+
 
         for(let i = 0; i<res.repos.length; i++){
-
             console.log(res.repos[i].name)
             let name = document.createElement('div');
             name.innerText = res.repos[i].name;
             desc = document.createElement('p');
             desc.innerText = res.repos[i].description;
-            document.getElementById('repos').appendChild(name)
-            document.getElementById('repos').appendChild(desc)
+            document.getElementById('repos').appendChild(name);
+            document.getElementById('repos').appendChild(desc);
         }
-    
     })
 }
+
