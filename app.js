@@ -9,11 +9,6 @@ app.use(express.json())
 
 app.use('/api', api);
 
-app.get('/', (req, res) => {
-  res.send({ 'Hello World!':'a' });
-});
-
-
 app.listen(port, () => {
   console.log(`Server listening at port: ${port}`)
 });
