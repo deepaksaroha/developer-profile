@@ -108,12 +108,12 @@ window.onload = ()=>{
     const srchbtn = document.querySelector('#srchbtn');
     srchbtn.addEventListener('click', event=>{
         event.preventDefault();
-        document.querySelector('#profiles-display').innerHTML = '';
 
         const formele = document.querySelector('#srchform');
         const formData = new FormData(formele);
 
-        if(formData.get('id') !== ''){
+        if(formData.get('id') !== ''){            
+            document.querySelector('#profiles-display').innerHTML = '';
             fetch(`/api/developers/${formData.get('id')}`)
             .then(res=>{
                 return res.json();
@@ -127,7 +127,6 @@ window.onload = ()=>{
             })
         }else{
             window.alert('Enter something to search')
-            displaydashboard()
         }
     })
 
