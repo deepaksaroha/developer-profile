@@ -59,7 +59,7 @@ hr{
 }
 
 #intro{
-    background-color: #b3b3ce;
+    background-color: #d2d2e9;
     display: grid;
     grid-template-columns: 1fr 2fr;
 }
@@ -69,6 +69,7 @@ hr{
     height: 400px;
     width: 400px;
     padding: 75px;
+    border-radius: 50%;
 }
 
 #name{

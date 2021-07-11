@@ -146,35 +146,37 @@ window.onload = ()=>{
         const formele = document.querySelector("#form");
         const formData = new FormData(formele);
 
-        const request = new Request('/api/developers', {
-            method: 'POST',
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: JSON.stringify(Object.fromEntries(formData))
-        })
-
-
-        fetch(request).then(res=>{
-            return res.json();
-        }).then(res=>{
-
-            displayprofs(res);
-
+        if(formData.get('github_id') !== ''){
+            const request = new Request('/api/developers', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json'
+                }),
+                body: JSON.stringify(Object.fromEntries(formData))
+            })
+        
+        
+            fetch(request).then(res=>{
+                return res.json();
+            }).then(res=>{
             
-            document.querySelector('#profiles-display').style.display = 'grid';
-            document.querySelector('.cover').style.display = 'block';
-            document.querySelector('.common hr').style.display = 'block';
-            document.querySelector('.bottom').innerText = 'Could not find what you were looking for?';
-
-        })
-        .catch(error=>{
-            window.alert('GitHub username is invalid')
-        })
-        .finally(()=>{
-            document.querySelector('#overlay').style.display = 'none'; 
-            document.querySelector('#dev-form').style.display = 'none';
-        })
+                displayprofs(res);            
+                
+                document.querySelector('#profiles-display').style.display = 'grid';
+                document.querySelector('.cover').style.display = 'block';
+                document.querySelector('.common hr').style.display = 'block';
+                document.querySelector('.bottom').innerText = 'Could not find what you were looking for?';
+            
+                document.querySelector('#overlay').style.display = 'none'; 
+                document.querySelector('#dev-form').style.display = 'none';
+            
+            })
+            .catch(error=>{
+                window.alert('GitHub username is invalid')
+            })
+        }else{
+            window.alert('GitHub username is required')
+        }
     })
 
     document.getElementById("profiles-display").addEventListener('click', (event)=>{
