@@ -1,31 +1,33 @@
 window.onload = ()=>{
 
-    function displayprofs(res){
+
+    function displayprofs(result){
+        
         let box = document.createElement('div');
-        box.name = res.id
+        box.name = result.id;
         box.class = 'proflinks';
-        box.style.width = '100%';
+        box.style.margin = '20px 0px';
         box.addEventListener('click', (event)=>{
+            console.log(event.target.name);            
             window.location = `profilepage.html?name=${event.target.name}`;
         })
 
         let avatar = document.createElement('img');
-        avatar.setAttribute('src', '/images/account_circle-24px.svg')
-        avatar.setAttribute('style','height: 100px')
-        avatar.setAttribute('style','width: 100px')
+        avatar.setAttribute('src', `https://github.com/${result.id}.png`);
+        avatar.setAttribute('style','width: 100px');
+        avatar.style.borderRadius = '50%';
         avatar.style.verticalAlign = 'middle';
-        avatar.name = res.id
+        avatar.name = result.id;
 
         let prof_id = document.createElement('span');
-        prof_id.innerText = res.id
+        prof_id.innerText = result.id
         prof_id.style.marginLeft = '50px';
         prof_id.style.marginRight = '20px';
-        prof_id.name = res.id
-        
+        prof_id.name = result.id;
+
         let arrow = document.createElement('img');
         arrow.setAttribute('src', '/images/north_east-24px.svg')
-        arrow.name = res.id
-
+        arrow.alt = result.id;
         box.appendChild(avatar)
         box.appendChild(prof_id)
         box.appendChild(arrow)
@@ -54,62 +56,42 @@ window.onload = ()=>{
         })
     }
 
-    displaydashboard()
+    displaydashboard();
 
-    const idinput = document.querySelector('.form-box input')
+    const idinput = document.querySelector('.form-box input');
 
-    idinput.addEventListener('focus', event=>{
-        event.preventDefault();
-        
+
+    idinput.addEventListener('focus', ()=>{
+        document.querySelector('#profiles-display').style.display = 'grid';
         fetch(`/api/developers/`)
         .then(res=>{
             return res.json();
         })
         .then(res=>{
-
-            let val = document.querySelector('.form-box input').value;
-
-            const timer = setInterval(()=>{
-                
-                let presentval = document.querySelector('.form-box input').value;
-
-
-                console.log(presentval, val)
-                if(presentval === '' && val !== presentval){
-                    document.querySelector('#profiles-display').style.display = 'grid';                    
-                    document.querySelector('#profiles-display').innerHTML = '';
-
-                    for(i in res.list){
-
-                        displayprofs(res.list[i]);
-                    }
-                }else if(presentval !== '' && val !== presentval){
-                    document.querySelector('#profiles-display').style.display = 'grid';
-                    document.querySelector('#profiles-display').innerHTML = '';
-                
-                    var patt = new RegExp('^'+presentval+"[A-Za-z0-9_]*")
-
-                    console.log(patt, presentval)
-
-                    for(i in res.list){
-                        if(patt.test(res.list[i].id)){
-
-                            displayprofs(res.list[i]);
-
-                        }
-                    }
-                }
-
-                idinput.addEventListener('focusout', event=>{
-                    clearInterval(timer);
-                })
-
-                if (presentval !== val){
-                    val = presentval;
-                }
-
-            }, 1000)
+            profileSearchResults = res.list;
         })
+    }) 
+
+    let filteredResults = []
+
+    idinput.addEventListener('input', event=>{
+        event.preventDefault();
+        const inputId = event.target.value;
+
+        filteredResults = profileSearchResults.filter(element=>{
+            return inputId.length && element.id.startsWith(inputId);
+        })
+
+
+        if (event.target.value.length>0){
+            document.querySelector('#profiles-display').innerHTML = '';
+            filteredResults.forEach(ele=>{
+                displayprofs(ele);
+            })
+        }else{
+            document.querySelector('#profiles-display').innerHTML = ''
+            displaydashboard();
+        }
     })
 
     
@@ -134,10 +116,10 @@ window.onload = ()=>{
                 document.querySelector('#profiles-display').style.display = 'none';
             })
         }else{
-            window.alert('Enter something to search')
+            window.alert('Enter something to search');
         }
     })
-
+ 
 
 
     const devbtn = document.querySelector('.bottom-btn');
@@ -166,6 +148,7 @@ window.onload = ()=>{
         const formele = document.querySelector("#form");
         const formData = new FormData(formele);
 
+
         if(formData.get('github_id') !== ''){
             const request = new Request('/api/developers', {
                 method: 'POST',
@@ -174,13 +157,12 @@ window.onload = ()=>{
                 }),
                 body: JSON.stringify(Object.fromEntries(formData))
             })
-        
+            
         
             fetch(request).then(res=>{
                 return res.json();
             }).then(res=>{
-            
-                displayprofs(res);            
+                displayprofs(res);
                 
                 document.querySelector('#profiles-display').style.display = 'grid';
                 document.querySelector('.cover').style.display = 'block';
@@ -192,7 +174,7 @@ window.onload = ()=>{
             
             })
             .catch(error=>{
-                window.alert('GitHub username is invalid')
+                window.alert('GitHub username is invalid');
             })
         }else{
             window.alert('GitHub username is required')
