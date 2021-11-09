@@ -28,13 +28,13 @@ window.onload = ()=>{
         img.src = img1
 
         a.appendChild(img)
-        document.getElementById('linklist').appendChild(a)
+        document.getElementById('linklist').appendChild(a);
     }
 
     const urlSearchParams = new URLSearchParams(window.location.search);
     const params = Object.fromEntries(urlSearchParams.entries());
 
-    const id = params.name
+    const id = params.name;
 
     fetch(`/api/developers/${id}`)
     .then(res=>{
@@ -62,7 +62,7 @@ window.onload = ()=>{
         reachlist('/images/business-24px.svg', res.company)
         reachlist('/images/insert_link-24px (1).svg', res.blog)
 
-
+ 
         for(let i = 0; i<res.repos.length; i++){
 
 
@@ -70,8 +70,10 @@ window.onload = ()=>{
             box.style.marginTop = '30px';
             box.style.marginBottom = '30px';
 
-            let name = document.createElement('span');
+            let name = document.createElement('a');
             name.innerText = res.repos[i].name;
+            name.href = res.repos[i].html_url;
+            name.style.textDecoration = 'none';
             name.style.fontSize = '36px';
             name.style.color = '#4396da';
 
