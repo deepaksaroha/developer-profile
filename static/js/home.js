@@ -6,7 +6,6 @@ window.onload = ()=>{
         let box = document.createElement('div');
         box.name = result.id;
         box.class = 'proflinks';
-        box.style.margin = '20px 0px';
         box.addEventListener('click', (event)=>{
             console.log(event.target.name);            
             window.location = `profilepage.html?name=${event.target.name}`;
@@ -14,15 +13,12 @@ window.onload = ()=>{
 
         let avatar = document.createElement('img');
         avatar.setAttribute('src', `https://github.com/${result.id}.png`);
-        avatar.setAttribute('style','width: 100px');
         avatar.style.borderRadius = '50%';
         avatar.style.verticalAlign = 'middle';
         avatar.name = result.id;
 
         let prof_id = document.createElement('span');
         prof_id.innerText = result.id
-        prof_id.style.marginLeft = '50px';
-        prof_id.style.marginRight = '20px';
         prof_id.name = result.id;
 
         let arrow = document.createElement('img');

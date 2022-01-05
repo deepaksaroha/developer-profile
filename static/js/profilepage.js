@@ -4,8 +4,6 @@ window.onload = ()=>{
 
     function reachlist(img1, text){
         const img = document.createElement('img');
-        img.setAttribute('style','height: 30px')
-        img.setAttribute('style','width: 30px')
         img.style.verticalAlign = 'middle';
         img.src = img1;
 
@@ -22,8 +20,6 @@ window.onload = ()=>{
         a.target = '_blank'
 
         const img = document.createElement('img');
-        img.setAttribute('style','height: 30px')
-        img.setAttribute('style','width: 30px')
         img.style.verticalAlign = 'middle';
         img.src = img1
 
@@ -74,13 +70,10 @@ window.onload = ()=>{
             name.innerText = res.repos[i].name;
             name.href = res.repos[i].html_url;
             name.style.textDecoration = 'none';
-            name.style.fontSize = '36px';
             name.style.color = '#4396da';
 
             let date = document.createElement('span');
             date.innerText = `Updated on ${res.repos[i].updated_at}`;
-            date.style.fontSize = '24px';
-            date.style.marginLeft = '20px';
             date.style.color = '#b3b9bd';
 
             let arrow = document.createElement('img');
@@ -88,7 +81,6 @@ window.onload = ()=>{
 
             let desc = document.createElement('p');
             desc.innerText = res.repos[i].description;
-            desc.style.fontSize = '32px';
             desc.style.color = '#7d7f81';
 
 
