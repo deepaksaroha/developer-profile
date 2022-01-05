@@ -15,6 +15,7 @@ body{
 
 .header{
     display: flex;
+    flex-direction: row-reverse;
     height: 600px;
     background-color: rgb(46, 36, 56);
     align-items: center;
@@ -98,6 +99,18 @@ hr{
     justify-content: space-between;
 }
 
+#profiles-display img{
+    height: 100px;
+    width: 100px;
+}
+#profiles-display span{
+    margin-left: 50px;
+    margin-right: 20px;
+}
+#profiles-display div{
+    margin: 20px 0;
+}
+
 
 .bottom{
     padding: 50px;
@@ -135,7 +148,8 @@ hr{
 
 #dev-form{
     position: absolute;
-    right: 30%;
+    right: 50%;
+    transform: translate(50%);
     top: 30%;
     display: none;
     width: fit-content;
@@ -199,4 +213,164 @@ hr{
 
 #profiles-display>div{
     width: fit-content;
+}
+
+@media screen and (max-width:675px) {
+    body{
+        margin: 0;
+        width: 100%;
+        font-family: 'Nunito Sans', sans-serif;
+    }
+    .header{
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        background-color: rgb(46, 36, 56);
+        align-items: center;
+        padding: 40px;
+    }
+    .item1{
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+    }
+    .img1 img{
+        height: auto;
+        width: 80%;
+    }
+    .heading{
+        color: #ffffff;
+        font-size: 30px;
+        padding: 0px;
+    }
+    .main-heading{
+        padding: 20px;
+        font-size: 16px;
+        color: #3f3d56;
+    }
+    .bottom{
+        padding: 50px;
+    }
+    
+    .bottom-btn{
+        font-size: inherit;
+        border: none;
+        height: 80px;
+        padding: 0 0;
+        border-radius: 12px;
+        background-color: #7c639f;
+        color: #fff;
+    }
+    .common{
+        font-size: 16px;
+        color: #3f3d56;
+    }
+    .footer{
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        height: 60px;
+        font-size: 10px;
+        line-height: 60px;
+        width: 100%;
+    }
+    .main{
+        padding: 0px 10px;
+        min-height: 500px;  
+    }
+    .bottom{
+        padding: 20px;
+    }
+    .bottom-btn{
+        height: 30px;
+        padding: 0 2em;
+        font-size: 12px;
+    }
+    #dev-form{
+        position: absolute;
+        right: 50%;
+        transform: translate(50%);
+        top: 10%;
+        width: fit-content;
+        padding: 10px;
+        font-size: 12px;
+        z-index: 1;
+    }
+    .form-head{
+        padding: 10px 25px 10px 25px;
+        font-size: 16px;
+        text-align: center;
+    }
+    #form-input{
+        padding: 12px 10px 12px 10px;
+    }
+    #form-input div input{
+        width: 200px;
+        height: 24px;
+        margin-bottom: 10px;
+        border: 1px solid #d0cde1;
+        border-radius: 8px;
+    }
+    #cancelbtn{
+        font-size: 12px;
+        background-color: inherit;
+        border: none;
+    }
+    
+    #submitbtn{
+        color: #fff;
+        width: 50px;
+        height: 20px;
+        font-size: 12px;
+        background-color: #7c639f;
+        border: none;
+        border-radius: 12px;
+    }
+    .input-itm img{
+        vertical-align: bottom;
+        height: 16px;
+        width: 16px;
+    }
+    .input-itm{
+        margin-bottom: 10px;
+    }
+    #form-btns{
+        padding: 12px 10px 12px 10px;
+        text-align: end;
+    }
+    .cover{
+        padding: 10px;
+    }
+    .form-box input{
+        height: fit-content;
+        width: 80%;
+        border: 0px;
+        font-size: 12px;
+        padding: 5px;
+    }
+    .form-box button img{
+        width: 20px;
+        height: 20px;
+        margin-left: 0px;
+    }
+    .form-box{
+        width: 80%;
+        padding: 6px;
+    }
+    #profiles-display{
+        margin: 10px auto 10px auto;
+    }
+    #profiles-display img{
+        height: 15px;
+        width: auto;
+    }
+    #profiles-display span{
+        margin-left: 10px;
+        margin-right: 5px;
+        font-size: 10px;
+    }
+    #profiles-display div{
+        margin: 5px 0;
+    }
+
 }
