@@ -12,9 +12,9 @@ Lets users create a profile by providing links to various profiles like github, 
 
 ## UI
 <img src="/readmeimages/dp-ss1.jpg" />
-<img src="/readmeimages/dp-ss2.jpg" />
-<img src="/readmeimages/dp-ss3.jpg" />
-<img src="/readmeimages/dp-ss4.jpg" />
+<img src="/readmeimages/dp-ss2.png" />
+<img src="/readmeimages/dp-ss3.png" />
+<img src="/readmeimages/dp-ss4.png" />
 
 ## API Endpoints
 ```
