@@ -45,18 +45,17 @@ window.onload = ()=>{
         document.getElementById('intro-line').innerText = res.bio;
 
 
-        res.github_id && linklist('/images/iconfinder_github_317712.png',`https://github.com/${res.github_id}`);
-        res.hackerrank_id && linklist('/images/iconfinder_160_Hackerrank_logo_logos_4373234.png',`https://www.hackerrank.com/profile/${res.hackerrank_id}`)
-        res.codechef_id && linklist('/images/codechef-1324440139527402917_32.png',`https://www.codechef.com/users/${res.codechef_id}`)
-        res.linkedin_id && linklist('/images/iconfinder_2018_social_media_popular_app_logo_linkedin_3225190.png',`https://linkedin.com/in/${res.linkedin_id}`)
-        res.medium_id && linklist('/images/iconfinder_Circled_Medium_svg5_5279113.png',`https://medium.com/@${res.medium_id}`)
-        res.twitter_id && linklist('/images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png',`https://twitter.com/${res.twitter_id}`)
-        res.email && linklist('/images/email-24px.svg',res.email)
+        res.github_id !== null && res.github_id !== "" ? res.github_id && linklist('/images/iconfinder_github_317712.png',`https://github.com/${res.github_id}`): '';
+        res.hackerrank_id !== null && res.hackerrank_id !== "" ? res.hackerrank_id && linklist('/images/iconfinder_160_Hackerrank_logo_logos_4373234.png',`https://www.hackerrank.com/profile/${res.hackerrank_id}`):'';
+        res.codechef_id !== null && res.codechef_id !== "" ? res.codechef_id && linklist('/images/codechef-1324440139527402917_32.png',`https://www.codechef.com/users/${res.codechef_id}`):'';
+        res.linkedin_id !== null && res.linkedin_id !== "" ? res.linkedin_id && linklist('/images/iconfinder_2018_social_media_popular_app_logo_linkedin_3225190.png',`https://linkedin.com/in/${res.linkedin_id}`):'';
+        res.medium_id !== null && res.medium_id !== "" ? res.medium_id && linklist('/images/iconfinder_Circled_Medium_svg5_5279113.png',`https://medium.com/@${res.medium_id}`):'';
+        res.twitter_id !== null && res.twitter_id !== "" ? res.twitter_id && linklist('/images/iconfinder_2018_social_media_popular_app_logo_twitter_3225183.png',`https://twitter.com/${res.twitter_id}`):'';
+        res.email !== null && res.email !== "" ? res.email && linklist('/images/email-24px.svg',res.email):'';
 
-        
-        reachlist('/images/location_on-24px.svg', res.location)
-        reachlist('/images/business-24px.svg', res.company)
-        reachlist('/images/insert_link-24px (1).svg', res.blog)
+        res.location !== null && res.location !== "" ? reachlist('/images/location_on-24px.svg', res.location):'';
+        res.company !== null && res.company !== "" ? reachlist('/images/business-24px.svg', res.company):'';
+        res.blog !== null && res.blog !== "" ? reachlist('/images/insert_link-24px (1).svg', res.blog):'';
 
  
         for(let i = 0; i<res.repos.length; i++){
