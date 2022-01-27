@@ -1,8 +1,8 @@
 # Developer Profile
 ## A profile building app.
+Lets users create a profile by providing links to various profiles like github, linkedin, twitter etc. Aggregates data from various public profiles and displays at one place. 
 <br/>
 http://devprofile1.herokuapp.com/
-Lets users create a profile by providing links to various profiles like github, linkedin, twitter etc. Aggregates data from various public profiles and displays at one place. 
 
 ## Technologies used
 <li>html</li>
